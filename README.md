@@ -12,4 +12,4 @@ Next.js 14 + Tailwind + Supabase + Cloudinary + Supermeme.
 Vercel for web. Supabase for Postgres and Auth. Cloudinary for assets. Add env vars on Vercel.
 
 ## Notes
-Instagram Graph API and TikTok posting require proper app setup and account types. Trending audio is not exposed by public APIs. Use Original Audio or royalty free tracks.
+Instagram Graph API and TikTok posting require proper app setup and account types. Trending audio is not exposed by public APIs. Use Original Audio or royalty free tracks.# Memeforge
