@@ -1,0 +1,62 @@
+generator client { provider = "prisma-client-js" }
+datasource db { provider = "postgresql"; url = env("DATABASE_URL") }
+
+enum SourceType { TEXT IMAGE LINK }
+enum PostStatus { DRAFT SCHEDULED PUBLISHED FAILED }
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+  memes     Meme[]
+  accounts  Account[]
+}
+
+model Meme {
+  id          String     @id @default(uuid())
+  userId      String
+  user        User       @relation(fields: [userId], references: [id])
+  sourceType  SourceType
+  sourceInput String
+  caption     String?
+  template    String?
+  canvasJson  String?
+  imageUrl    String?
+  videoUrl    String?
+  createdAt   DateTime   @default(now())
+  posts       Post[]
+}
+
+model Account {
+  id           String   @id @default(uuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id])
+  platform     String
+  accessToken  String
+  refreshToken String?
+  scope        String?
+  expiresAt    DateTime?
+  createdAt    DateTime @default(now())
+}
+
+model Post {
+  id              String     @id @default(uuid())
+  memeId          String
+  meme            Meme       @relation(fields: [memeId], references: [id])
+  platform        String
+  platformMediaId String?
+  status          PostStatus @default(DRAFT)
+  scheduledAt     DateTime?
+  publishedAt     DateTime?
+  createdAt       DateTime   @default(now())
+  metrics         Metric[]
+}
+
+model Metric {
+  id         String   @id @default(uuid())
+  postId     String
+  post       Post     @relation(fields: [postId], references: [id])
+  name       String
+  value      Int
+  capturedAt DateTime @default(now())
+}

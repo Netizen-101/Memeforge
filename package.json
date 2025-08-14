@@ -1,0 +1,37 @@
+{
+  "name": "memeforge",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "postinstall": "prisma generate",
+    "seed:openverse": "node ./scripts/seed_openverse.mjs"
+  },
+  "dependencies": {
+    "@supabase/auth-helpers-nextjs": "0.10.0",
+    "@supabase/supabase-js": "2.45.3",
+    "@prisma/client": "5.16.2",
+    "axios": "1.7.2",
+    "cloudinary": "1.41.3",
+    "konva": "9.3.10",
+    "next": "14.2.4",
+    "prisma": "5.16.2",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-konva": "18.2.10",
+    "tailwindcss": "3.4.7",
+    "zod": "3.23.8",
+    "clsx": "2.1.1",
+    "use-image": "1.1.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "10.4.18",
+    "postcss": "8.4.39",
+    "typescript": "5.5.4",
+    "@types/node": "20.11.30",
+    "@types/react": "18.2.66",
+    "@types/react-dom": "18.2.22"
+  }
+}
